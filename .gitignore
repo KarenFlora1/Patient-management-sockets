@@ -1,0 +1,9 @@
+*.class
+sources.txt
+
+/build/**
+
+*.ps1
+!build.ps1
+
+
