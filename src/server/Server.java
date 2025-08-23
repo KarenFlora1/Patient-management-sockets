@@ -1,34 +1,32 @@
 package server;
 
+import server.config.ServerConfig;
 import server.service.PatientService;
 import server.handler.PatientHandler;
 
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
 
-    private static final int PORT = 12345; 
-    private static final String DB_FILE = "clinic.db"; 
-
     public static void main(String[] args) {
+        // Lê configuração
+        ServerConfig config = new ServerConfig("config.properties");
+
         try {
-            PatientService patientService = new PatientService(DB_FILE);
-            
+            PatientService patientService = new PatientService(config.getDbFile());
             PatientHandler patientHandler = new PatientHandler(patientService);
 
-            try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-                System.out.println("Servidor rodando na porta " + PORT);
+            try (ServerSocket serverSocket = new ServerSocket(config.getPort())) {
+                System.out.println("Servidor rodando na porta " + config.getPort());
 
                 while (true) {
                     Socket socket = serverSocket.accept();
+                    System.out.println("Conexão aceita: " + socket);
                     new Thread(new ClientHandler(socket, patientHandler)).start();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             } finally {
-                patientService.close(); 
+                patientService.close();
             }
 
         } catch (Exception e) {

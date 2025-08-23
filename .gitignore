@@ -6,4 +6,8 @@ sources.txt
 *.ps1
 !build.ps1
 
+*.db
+
+*.properties
+
 
