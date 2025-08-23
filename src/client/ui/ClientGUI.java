@@ -3,6 +3,7 @@ package client.ui;
 import common.model.Patient;
 import common.dto.Request;
 import common.dto.Response;
+import client.config.ClientConfig;
 import client.net.ClientConnection;
 
 import javax.swing.*;
@@ -147,7 +148,8 @@ public class ClientGUI {
 
     public static void main(String[] args) {
         try {
-            ClientConnection conn = new ClientConnection("localhost", 12345);
+            ClientConfig config = new ClientConfig("client.properties");
+            ClientConnection conn = new ClientConnection(config);
             SwingUtilities.invokeLater(() -> new ClientGUI(conn));
         } catch (Exception e) {
             e.printStackTrace();
