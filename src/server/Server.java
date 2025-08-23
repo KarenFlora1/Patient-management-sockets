@@ -11,7 +11,7 @@ public class Server {
 
     public static void main(String[] args) {
         // Lê configuração
-        ServerConfig config = new ServerConfig("config.properties");
+        ServerConfig config = new ServerConfig("server.properties");
 
         try {
             PatientService patientService = new PatientService(config.getDbFile());

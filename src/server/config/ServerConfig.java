@@ -16,7 +16,7 @@ public class ServerConfig {
             System.out.println("Arquivo de configuração não encontrado, usando valores padrões.");
         }
 
-        this.port = Integer.parseInt(props.getProperty("server.port", "12345"));
+        this.port = Integer.parseInt(props.getProperty("server.port", "5055"));
         this.dbFile = props.getProperty("db.file", "clinic.db");
     }
 
