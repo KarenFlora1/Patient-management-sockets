@@ -38,7 +38,7 @@ Numa estrutra como as indicadas abaixo:
 server.port=\<porta\>
 db.file=\<nomebd\>
 ```
-### `server.properties`:
+### `client.properties`:
 ```conf
 * server.port=\<porta\>
 * server.host=\<ip\>
