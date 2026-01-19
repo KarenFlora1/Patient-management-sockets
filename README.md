@@ -14,7 +14,7 @@ Numa estrutra como as indicadas abaixo:
          |   |- client/
          |   |- common/
          |-client.properties
-         |-build.ps1
+         |-run_client.cmd
 
 ### No Servidor
     raiz *
@@ -22,12 +22,12 @@ Numa estrutra como as indicadas abaixo:
          |   |- common/
          |   |- server/
          |-server.properties
-         |-build.ps1
+         |-run_server.cmd
 
 
 ## Dependencias
 
-* **Obs:** Do momento somente tem build script para *powershell*
+* **Obs:** Do momento somente tem build script para *cmd*
 * Java 8+
 * [SQLite](./lib/sqlite-jdbc-3.50.2.0.jar) 
 
@@ -49,13 +49,13 @@ db.file=\<nomebd\>
 No directorio raiz correspondente execute
 
 **Server:**
-```ps1
-    .\build.ps1
+```shell
+    run_server.cmd
     java -cp "build;lib/*" server.Server
 ```
 
 **Cliente:**
-```ps1
-    .\build.ps1
+```shell
+    run_client.cmd
     java -cp "build;lib/*" client.ui.ClientGUI
 ```
