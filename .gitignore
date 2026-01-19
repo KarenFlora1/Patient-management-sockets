@@ -1,13 +1,30 @@
-*.class
-sources.txt
+# Pastas geradas automaticamente
+/build/
+/out/
+/bin/
 
-/build/**
-
+# Scripts de compilação (como pediste)
+build.cmd
 *.ps1
 !build.ps1
 
+# Ficheiros de configuração locais
+*.properties
+
+# Ficheiros compilados do Java
+*.class
+
+# Configurações do VS Code
+.vscode/
+
+sources.txt
+# Ficheiros de log
+*.log
+
+# Outros ficheiros do sistema
+.DS_Store
+Thumbs.db
 *.db
 
-*.properties
 
 

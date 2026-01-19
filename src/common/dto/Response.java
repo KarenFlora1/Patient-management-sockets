@@ -1,20 +1,28 @@
 package common.dto;
 
 import java.io.Serializable;
+import java.util.List;
+import common.model.Patient;
 
 public class Response implements Serializable {
-    private boolean success;
-    private String message;
-    private Object payload;
+    private static final long serialVersionUID = 1L;
 
-    public Response(boolean success, String message, Object payload) {
-        this.success = success;
-        this.message = message;
-        this.payload = payload;
+    public String status;        // "ok" | "error"
+    public String message;       // mensagem opcional
+    public List<Patient> data;   // lista (listPatients)
+    public String token;         // devolvido no LOGIN
+
+    public static Response okMsg(String msg) {
+        Response r = new Response();
+        r.status = "ok";
+        r.message = msg;
+        return r;
     }
 
-    public boolean isSuccess() { return success; }
-    public String getMessage() { return message; }
-    public Object getPayload() { return payload; }
+    public static Response error(String msg) {
+        Response r = new Response();
+        r.status = "error";
+        r.message = msg;
+        return r;
+    }
 }
-

@@ -17,7 +17,7 @@ public class ClientConfig {
         }
 
         this.host = props.getProperty("server.host", "localhost");
-        this.port = Integer.parseInt(props.getProperty("server.port", "12345"));
+        this.port = Integer.parseInt(props.getProperty("server.port", "9090")); // default ajustado
     }
 
     public String getHost() {
@@ -26,5 +26,10 @@ public class ClientConfig {
 
     public int getPort() {
         return port;
+    }
+
+    @Override
+    public String toString() {
+        return "ClientConfig{host='" + host + "', port=" + port + "}";
     }
 }

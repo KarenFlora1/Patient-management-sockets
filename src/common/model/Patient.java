@@ -6,20 +6,25 @@ import java.time.LocalDate;
 public class Patient implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String nome;
-    private int idade;
-    private String bi; // substituindo CPF
+    // Chave técnica (preenchida pelo DAO após INSERT ou ao listar)
+    public Integer id;  // null para registos novos
 
-    // Novos campos
-    private String telefone;
-    private String endereco;
-    private String email;
-    private String genero;
-    private LocalDate dataNascimento;
-    private String historicoMedico;
-    private String planoSaude;
+    // Campos públicos (mantidos)
+    public String nome;
+    public int idade;
+    public String bi;
+    public String telefone;
+    public String endereco;
+    public String email;
+    public String genero;
+    public LocalDate dataNascimento;
+    public String historicoMedico;
+    public String planoSaude;
 
-    // Construtor
+    // Construtor vazio (requisito para Gson)
+    public Patient() {}
+
+    // Construtor completo (sem id)
     public Patient(String nome, int idade, String bi, String telefone, String endereco, String email,
                    String genero, LocalDate dataNascimento, String historicoMedico, String planoSaude) {
         this.nome = nome;
@@ -34,21 +39,16 @@ public class Patient implements Serializable {
         this.planoSaude = planoSaude;
     }
 
-    // Getters
-    public String getNome() { return nome; }
-    public int getIdade() { return idade; }
-    public String getBi() { return bi; }
-    public String getTelefone() { return telefone; }
-    public String getEndereco() { return endereco; }
-    public String getEmail() { return email; }
-    public String getGenero() { return genero; }
-    public LocalDate getDataNascimento() { return dataNascimento; }
-    public String getHistoricoMedico() { return historicoMedico; }
-    public String getPlanoSaude() { return planoSaude; }
+    // Construtor com id (usado ao carregar da BD)
+    public Patient(Integer id, String nome, int idade, String bi, String telefone, String endereco, String email,
+                   String genero, LocalDate dataNascimento, String historicoMedico, String planoSaude) {
+        this(nome, idade, bi, telefone, endereco, email, genero, dataNascimento, historicoMedico, planoSaude);
+        this.id = id;
+    }
 
     @Override
     public String toString() {
-        return nome + " | Idade: " + idade + " | BI: " + bi + " | Telefone: " + telefone;
+        String idPart = (id != null ? "#" + id + " " : "");
+        return idPart + nome + " | Idade: " + idade + " | BI: " + bi + " | Telefone: " + telefone;
     }
 }
-

@@ -16,7 +16,8 @@ public class ServerConfig {
             System.out.println("Arquivo de configuração não encontrado, usando valores padrões.");
         }
 
-        this.port = Integer.parseInt(props.getProperty("server.port", "5055"));
+        // Porta e ficheiro de BD com defaults ajustados
+        this.port = Integer.parseInt(props.getProperty("server.port", "9090"));
         this.dbFile = props.getProperty("db.file", "clinic.db");
     }
 
@@ -26,5 +27,10 @@ public class ServerConfig {
 
     public String getDbFile() {
         return dbFile;
+    }
+
+    @Override
+    public String toString() {
+        return "ServerConfig{port=" + port + ", dbFile='" + dbFile + "'}";
     }
 }
