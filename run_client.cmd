@@ -17,3 +17,13 @@ if defined OVERRIDE_HOST (
 )
 
 java -cp "%CP%" %MAIN%
+
+## Tecnologias
+
+- Java
+- Sockets TCP
+- Programação orientada a objetos
+
+## Autor
+
+Projeto acadêmico desenvolvido no contexto da disciplina de Sistemas Distribuídos.
